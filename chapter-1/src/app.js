@@ -99,6 +99,15 @@ app.put('/account', verifyIfAccountCpfExists, (req, res) => {
         "message": "Alteração realizada com sucesso"
     })
 })
+app.delete('/account', verifyIfAccountCpfExists, (req, res) => {
+    const { customer } = req;
+
+
+    customers.splice(customer, 1);
+    res.status(200).json({
+        "message": "Registro deletado com sucesso"
+    })
+})
 app.listen(8000, () => {
     console.log("executando");
 })
