@@ -1,3 +1,4 @@
+const { response } = require('express');
 const express = require('express');
 const { v4: uuidv4 } = require('uuid');
 const app = express();
@@ -73,9 +74,9 @@ app.post('/deposit', verifyIfAccountCpfExists, (req, res) => {
 
 app.get('/statement/date', verifyIfAccountCpfExists, (req, res) => {
     const { customer } = req;
-    const {date} = req.query
+    const { date } = req.query
     const dateFormat = new Date(date + " 00:00");
-  
+
 
     // const statement = customer.statement.filter(item => item.created_at.toDateString() == dateFormat.toDateString());
 
@@ -90,6 +91,14 @@ app.get('/statement/date', verifyIfAccountCpfExists, (req, res) => {
     })
 })
 
+app.put('/account', verifyIfAccountCpfExists, (req, res) => {
+    const { name } = request.body;
+    const { customer } = request;
+    customer.name = name;
+    return response.status(201).json({
+        "message": "Alteração realizada com sucesso"
+    })
+})
 app.listen(8000, () => {
     console.log("executando");
 })
