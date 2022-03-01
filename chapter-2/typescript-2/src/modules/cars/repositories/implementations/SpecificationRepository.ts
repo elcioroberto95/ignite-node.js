@@ -4,10 +4,20 @@ import { ISpecificationRepository, ISpecificationRepositoryDTO } from "../ISpeci
 
 class SpecificationRepository implements ISpecificationRepository {
     private specifications: Specification[];
-    constructor() {
+
+
+    private static INSTANCE: SpecificationRepository;
+
+   private constructor() {
         this.specifications = [];
     }
 
+    public static getInstance(): SpecificationRepository {
+        if (!SpecificationRepository.INSTANCE) {
+            SpecificationRepository.INSTANCE = new SpecificationRepository();
+        }
+        return SpecificationRepository.INSTANCE
+    }
     findByName(name: string): Specification {
         const specificationAlreadyExists = this.specifications.find(item => item.name == name);
         if (specificationAlreadyExists) {

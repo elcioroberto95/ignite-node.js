@@ -12,12 +12,8 @@ class CreateCategoryController {
             return res.status(201).json({ message: "Category cadastrada com sucesso" })
         }
         catch (error) {
-
-            error = String(error).replace("Error: ","");
-
-            return res.status(501).json({
-                error
-            })
+            error = String(error).replace("Error: ", "");
+            return res.status(500).json({ error })
         }
     }
 }

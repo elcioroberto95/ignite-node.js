@@ -1,7 +1,4 @@
 import { ICategoryRepository } from "../../repositories/ICategoryRepository";
-
-
-
 interface IRequest {
     name: string;
     description: string;
