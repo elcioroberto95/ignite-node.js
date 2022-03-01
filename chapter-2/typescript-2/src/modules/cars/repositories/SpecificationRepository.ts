@@ -4,6 +4,9 @@ import { ISpecificationRepository, ISpecificationRepositoryDTO } from "./ISpecif
 
 class SpecificationRepository implements ISpecificationRepository {
     private specifications: Specification[];
+    constructor() {
+        this.specifications = [];
+    }
 
     findByName(name: string): Specification {
         const specificationAlreadyExists = this.specifications.find(item => item.name == name);
