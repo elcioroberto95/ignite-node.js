@@ -12,7 +12,7 @@ categoriesRoutes.post('/', (req, res) => {
 
 
 categoriesRoutes.get('/', (req, res) => {
-    return listCategoriesController.handle(req, res);
+  return  listCategoriesController.handle(req,res);
 })
 export {
     categoriesRoutes
