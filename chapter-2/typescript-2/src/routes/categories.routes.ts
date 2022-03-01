@@ -1,28 +1,32 @@
 import { Router } from 'express';
-import { v4 as uuidV4, v4 } from 'uuid'
-import { Category } from '../model/Category';
-import { CategoryRepository } from '../repositories/CategoryRepository';
+import { CategoryRepository } from '../modules/cars/repositories/CategoryRepository';
+import { CreateCategoryService } from '../modules/cars/services/CreateCategoryService';
 const categoriesRoutes = Router();
 const categories = new CategoryRepository();
 
 categoriesRoutes.post('/', (req, res) => {
     const { name, description } = req.body;
-    if(!categories.findByName(name)){
-        categories.create({ name, description });
-        return res.status(201).send();
+
+    const createCategoryService = new CreateCategoryService(categories);
+
+    try {
+        createCategoryService.execute({ name, description });
+        res.status(201).json({
+            message: "Category cadastrada com sucesso"
+        })
     }
-    else {
-        return res.status(403).json({
-            "error":"Category already exists"
-        });
+    catch (error) {
+        res.status(500).json({
+            error
+        })
     }
-    
+
 })
 
 categoriesRoutes.get('/', (req, res) => {
     const listCategories = categories.list();
     return res.status(201).json({
-        data: categories
+        data: listCategories
     });
 })
 export {
