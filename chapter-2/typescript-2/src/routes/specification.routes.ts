@@ -15,7 +15,8 @@ specificationRoutes.post('/', (req, res) => {
         })
     }
     catch (error) {
-        console.log(error)
+    var string = JSON.stringify(error);
+    console.log(string)
         res.status(404).json({
             error:JSON.stringify(error)
         })
