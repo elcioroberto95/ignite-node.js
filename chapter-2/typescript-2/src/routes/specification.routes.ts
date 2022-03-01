@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { CreateSpecificationService } from '../modules/cars/services/CreateSpecificationService';
-import { SpecificationRepository } from '../modules/cars/repositories/SpecificationRepository'
+import { SpecificationRepository } from '../modules/cars/repositories/implementations/SpecificationRepository'
 
 
 const specificationRoutes = Router();
@@ -15,10 +15,10 @@ specificationRoutes.post('/', (req, res) => {
         })
     }
     catch (error) {
-    var string = JSON.stringify(error);
-    console.log(string)
+        var string = JSON.stringify(error);
+        console.log(string)
         res.status(404).json({
-            error:JSON.stringify(error)
+            error: JSON.stringify(error)
         })
     }
 })
