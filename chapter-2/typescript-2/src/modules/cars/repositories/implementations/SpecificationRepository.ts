@@ -8,7 +8,7 @@ class SpecificationRepository implements ISpecificationRepository {
 
     private static INSTANCE: SpecificationRepository;
 
-   private constructor() {
+    private constructor() {
         this.specifications = [];
     }
 
@@ -28,7 +28,7 @@ class SpecificationRepository implements ISpecificationRepository {
 
     }
     list(): Specification[] {
-        throw new Error("Method not implemented.");
+        return this.specifications;
     }
     create({ name, description }: ISpecificationRepositoryDTO): void {
         const specification = new Specification();
