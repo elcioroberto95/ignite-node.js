@@ -1,7 +1,5 @@
 import { Category } from "../model/Category";
 import { ICategoryRepository, ICreateCategoryDTO } from './ICategoryRepository';
-
-
 class CategoryRepository implements ICategoryRepository {
     private categories: Category[];
 
@@ -11,7 +9,6 @@ class CategoryRepository implements ICategoryRepository {
 
     create({ name, description }: ICreateCategoryDTO): void {
         const category = new Category();
-
         Object.assign(category, {
             name,
             description,
@@ -28,6 +25,7 @@ class CategoryRepository implements ICategoryRepository {
         return categoryExist
     }
 }
+
 export {
     CategoryRepository
 }
