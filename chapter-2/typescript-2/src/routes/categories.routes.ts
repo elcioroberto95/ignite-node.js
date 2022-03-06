@@ -22,7 +22,7 @@ categoriesRoutes.get('/', (req, res) => {
 
 
 categoriesRoutes.post('/import', upload.single("file"), (req, res) => {
-    console.log("oi")
+   
     return importCategoriesController.handle(req, res);
 })
 export {
