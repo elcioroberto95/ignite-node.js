@@ -1,5 +1,6 @@
 import express from 'express';
 import { router } from './routes';
+import { Multer } from 'multer'
 
 const app = express();
 
